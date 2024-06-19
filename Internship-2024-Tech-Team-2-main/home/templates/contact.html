@@ -1,0 +1,70 @@
+<title>Contacts</title>
+{% extends 'navBar.html' %}
+{% load static %}
+{% block main %}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+            <h3 class="display-4 text-white text-uppercase">Contact</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'home' %}">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Contact</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Contact Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Contact</h5>
+            <h1>Contact For Any Query</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form bg-secondary rounded p-5">
+                    <!-- Error/success messages can be displayed here -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            There was an error with your submission. Please correct the following:
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    
+                    <form method="post" action="{% url 'contact' %}">  <!-- Specify the URL of your contact view -->
+                        {% csrf_token %}
+                        <div class="control-group">
+                            {{ form.name }}  <!-- Render the form's 'name' field -->
+                        </div>
+                        <div class="control-group">
+                            {{ form.email }}  <!-- Render the form's 'email' field -->
+                        </div>
+                        <div class="control-group">
+                            {{ form.subject }}  <!-- Render the form's 'subject' field -->
+                        </div>
+                        <div class="control-group">
+                            {{ form.message }}  <!-- Render the form's 'message' field -->
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>  <!-- Submit button -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+{% endblock main %}

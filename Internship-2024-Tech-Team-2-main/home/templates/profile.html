@@ -1,0 +1,134 @@
+<title>My Profile</title>
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block main %}
+
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">My Profile</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Profile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">UserName: {{ request.user.username }}</span>
+                    <span class="text-black-50">{{  request.user.email }}</span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="row justify-content-center">
+                    <div class="p-3 py-5">
+                        <div class="card">
+                            <div class="card-header">Profile Settings</div>
+                            <div class="card-body">
+                                <form id="profile-form" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group row">
+                                        <label for="id_name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                        <div class="col-md-6">
+                                            <input id="id_name" type="text" class="form-control" name="name" value="{{ user_profile.name }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="id_surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                                        <div class="col-md-6">
+                                            <input id="id_surname" type="text" class="form-control" name="surname" value="{{ user_profile.surname }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="id_mobile_number" class="col-md-4 col-form-label text-md-right">Mobile Number</label>
+                                        <div class="col-md-6">
+                                            <input id="id_mobile_number" type="text" class="form-control" name="mobile_number" value="{{ user_profile.mobile_number }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="id_information" class="col-md-4 col-form-label text-md-right">Information</label>
+                                        <div class="col-md-6">
+                                            <input id="id_information" type="text" class="form-control" name="information" value="{{ user_profile.information }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="id_email" class="col-md-4 col-form-label text-md-right">Email ID</label>
+                                        <div class="col-md-6">
+                                            <input id="id_email" type="text" class="form-control" name="email" value="{{  request.user.email }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-0">
+                                        <div class="col-md-6 offset-md-4">
+                                            <button id="edit-profile-btn" type="button" class="btn btn-primary">Edit Profile</button>
+                                            <button id="save-profile-btn" type="submit" class="btn btn-primary" style="display: none;">Save Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const editBtn = document.getElementById('edit-profile-btn');
+                    const saveBtn = document.getElementById('save-profile-btn');
+                    const formFields = document.querySelectorAll('.form-control');
+            
+                    editBtn.addEventListener('click', function () {
+                        formFields.forEach(field => {
+                            field.removeAttribute('readonly');
+                        });
+                        editBtn.style.display = 'none';
+                        saveBtn.style.display = 'inline-block';
+                    });
+                });
+            </script>
+            
+            
+                
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const editBtn = document.getElementById('edit-profile-btn');
+                        const saveBtn = document.getElementById('save-profile-btn');
+                        const formFields = document.querySelectorAll('.form-control');
+                
+                        editBtn.addEventListener('click', function () {
+                            formFields.forEach(field => {
+                                field.removeAttribute('readonly');
+                            });
+                            editBtn.style.display = 'none';
+                            saveBtn.style.display = 'inline-block';
+                        });
+                    });
+                </script>
+                
+            
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <span>Additional Actions</span>
+                    </div>
+                    <br>
+                    <div class="mt-5 text-center">
+                        <a href="{% url 'change_password' %}" class="btn btn-danger profile-button">Change Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}

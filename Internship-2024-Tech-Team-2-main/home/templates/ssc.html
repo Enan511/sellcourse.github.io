@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>COURSE SELLERS - Online Courses HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="{% static '../static/img/favicon.ico' %}" rel="icon">
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="{% static '../static/lib/owlcarousel/assets/owl.carousel.min.css' %}" >
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{% static '../static/css/style.css' %}">
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center py-4 px-xl-5">
+            <div class="col-lg-3">
+                <a href="{% url 'home' %}" class="text-decoration-none">
+                    <h1 class="m-0"><span class="text-primary">Course</span>Demy</h1>
+                </a>
+            </div>
+            <div class="col-lg-3 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
+                    <div class="text-left">
+                        <h6 class="font-weight-semi-bold mb-1">Our Office</h6>
+                        <small>Green Road, Cha er dokan er pashe</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <i class="fa fa-2x fa-envelope text-primary mr-3"></i>
+                    <div class="text-left">
+                        <h6 class="font-weight-semi-bold mb-1">Email Us</h6>
+                        <small><a href="mailto:parinakisu@uap-bd.edu">parinakisu@uap-bd.edu</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <i class="fa fa-2x fa-phone text-primary mr-3"></i>
+                    <div class="text-left">
+                        <h6 class="font-weight-semi-bold mb-1">Call Us</h6>
+                        <small>+420 6969 69</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <!-- Left side of the navbar -->
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="d-flex align-items-center justify-content-between bg-secondary w-100 text-decoration-none" data-toggle="collapse" href="#navbar-vertical" style="height: 67px; padding: 0 30px;">
+                <h5 class="text-primary m-0"><i class="fa fa-book-open mr-2"></i>Subjects</h5>
+                <i class="fa fa-angle-down text-primary"></i>
+            </a>
+            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 9;">
+                <div class="navbar-nav w-100">
+                    <div class="nav-item dropdown">
+                        <!-- <a href="#" class="nav-link" data-toggle="dropdown">Web Design <i class="fa fa-angle-down float-right mt-1"></i></a> -->
+                        <!-- <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                            <a href="" class="dropdown-item">HTML</a>
+                            <a href="" class="dropdown-item">CSS</a>
+                            <a href="" class="dropdown-item">jQuery</a>
+                        </div> -->
+                    </div>
+                    <a href="{% url 'ssc_courses' %}" class="nav-item nav-link">SSC Courses</a>
+                    <a href="{% url 'hsc_courses' %}" class="nav-item nav-link">HSC Courses</a>
+                    <a href="{% url 'admission_courses' %}" class="nav-item nav-link">Varsity Admission Courses</a>
+                    <a href="{% url 'coursesall' %}" class="nav-item nav-link">See All Courses</a>
+                    <!-- <a href="" class="nav-item nav-link">SEO</a> -->
+                </div>
+            </nav>
+        </div>
+        <!-- Right side of the navbar -->
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0"><span class="text-primary">E</span>COURSES</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav py-0">
+                        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                        <a href="{% url 'allcourses' %}" class="nav-item nav-link">Courses</a>
+                        <a href="{% url 'teachers' %}" class="nav-item nav-link">Teachers</a>
+                        <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                        <!-- Login/Register links -->
+                        {% if user.is_authenticated %}
+                        <!-- <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a> -->
+                        {% else %}
+                        <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+                    
+                        {% endif %}
+                    </div>
+                    <!-- Button for Join Now (if needed) -->
+                    <div class="dropdown">
+                        {% if user.is_authenticated %}
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ request.user.username }}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                                <a class="dropdown-item" href="#">My Courses</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        {% else %}
+                            <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'create_account' %}">Join Now</a>
+                        {% endif %}
+                    </div>
+                    
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+    <main>
+        <!-- Add this form inside the <main> tag -->
+    <div class="d-flex justify-content-center">
+        <form method="GET" action="{% url 'search_courses_ssc' %}" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" style="max-width: 200px;" placeholder="Search for courses...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% block main %}
+<main>
+    <div class="container">
+        <div class="row">
+            {% for course in courses %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ course.image.url }}" alt="{{ course.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text"><strong>Teacher:</strong> {{ course.teacher }}</p>
+                        <p class="card-text"><strong>Category:</strong> {{ course.get_category_display }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span><i class="fa fa-users text-primary mr-1"></i>25 Students</span>
+                                <span class="ml-3"><i class="far fa-clock text-primary mr-1"></i>01h 30m</span>
+                            </div>
+                            <div>
+                                <span><i class="fa fa-star text-primary mr-1"></i>{{ course.rating }} <small>({{ course.review_count }})</small></span>
+                                <span class="ml-3">${{ course.price }}</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary mt-3">See This Course</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if courses.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ courses.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ courses.number }} of {{ courses.paginator.num_pages }}.
+                    </span>
+
+                    {% if courses.has_next %}
+                        <a href="?page={{ courses.next_page_number }}">next</a>
+                        <a href="?page={{ courses.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
+    </main>
+
+<!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-7 col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mb-5">
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Green Road, Cha er dokan er pashe</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+420 6969 69</p>
+                        <p><i class="fa fa-envelope mr-2"></i>parinakisu@uap-bd.edu</p>
+                        <div class="d-flex justify-content-start mt-4">
+                            <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Our Courses</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Marketing</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Research</a>
+                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>SEO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 mb-5">
+                <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Newsletter</h5>
+                <p style="text-align: justify">There was a time when people believed Earth is flat. So many people were titled Heretics and got rewarded with a noose on their neck. Some were fed poison. Even now, some people refuse to believe the earth is round. They believe NASA is a paid government agent. Which is true, but what benefit would NASA or the govt. gain by lying to people about earth being flat or circle. Do they think people will receive tax waiver if the earth was actually flat?</p>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white">&copy; <a href="#">CourseSellers</a>. All Rights Reserved.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <ul class="nav d-inline-flex">
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">Terms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static '../static/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static '../static/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static '../static/mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static '../static/mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static '../static/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<title>About</title>
+{% extends 'navBar.html' %}
+{% load static %}
+{% block main %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">About</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">About</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static '../static/img/about.jpg' %}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
+                        <h1>Innovative Way To Learn</h1>
+                    </div>
+                    <p>At CourseSellers, we're passionate about education. Our platform is designed to make learning convenient, engaging, and impactful. With a curated selection of courses taught by expert instructors, we're committed to providing high-quality content that meets the diverse needs of our learners. Whether you're aiming to advance your career, explore new interests, or simply enhance your skills, CourseSellers offers a flexible learning experience that fits your schedule and lifestyle. Join us today and take the first step towards unlocking your full potential.</p>
+                    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Testimonial</h5>
+                <h1>Comments of Our Students</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4">"CourseSeller has been a game-changer for me! The flexibility to learn at my own pace, coupled with the expertise of the instructors, has truly helped me advance in my career. I've taken multiple courses on the platform and have been consistently impressed by the quality of content and the support from the CourseSellers team."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4">"I can't recommend CourseSellers enough! As someone with a busy schedule, the convenience of being able to access high-quality courses from anywhere has been invaluable. The instructors are knowledgeable, the material is engaging, and I've seen tangible results in my skill development since joining the platform."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4">"CourseSellers has exceeded my expectations in every way. From the user-friendly interface to the depth of course content, everything about the platform screams excellence. I've learned new skills, expanded my knowledge, and even connected with like-minded individuals through the CourseSeller community. It's been an enriching experience that I wholeheartedly recommend to anyone looking to invest in their personal or professional growth."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+{% endblock main %}

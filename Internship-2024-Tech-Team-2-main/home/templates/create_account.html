@@ -1,0 +1,58 @@
+<title>Sign Up</title>
+{% extends 'topbar.html' %}
+{% load static %}
+{% block topbar %}
+
+
+<!-- Registration Start -->
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Need Any Courses?</h5>
+                    <h1 class="text-white">30% Off For New Students, Hurry Up!!!</h1>
+                </div>
+                <p class="text-white">Explore endless possibilities with our curated courses. Elevate your skills, transform your career trajectory. Unleash your potential, from our courses time to time.</p>
+                <ul class="list-inline text-white m-0">
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diverse courses for career growth and personal enrichment</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Expert-led learning with high-quality content</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Flexible, accessible learning tailored to your schedule</li>
+                </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-light text-center p-4">
+                        <h1 class="m-0">Sign Up Now</h1>
+                    </div>
+                    <div class="card-body rounded-bottom bg-primary p-5">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.username.errors }}
+                                <input type="text" name="username" class="form-control border-0 p-4" placeholder="Your Name" required="required" value="{{ form.username.value }}">
+                            </div>
+                            <div class="form-group">
+                                {{ form.email.errors }}
+                                <input type="email" name="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" value="{{ form.email.value }}">
+                            </div>
+                            <div class="form-group">
+                                {{ form.password.errors }}
+                                <input type="password" name="password" class="form-control border-0 p-4" placeholder="Password" required="required">
+                            </div>
+                            <div class="form-group">
+                                {{ form.confirm_password.errors }}
+                                <input type="password" name="confirm_password" class="form-control border-0 p-4" placeholder="Confirm Password" required="required">
+                            </div>
+                            <button type="submit">Register</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration End -->
+
+{% endblock topbar %}

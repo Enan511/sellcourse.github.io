@@ -1,0 +1,107 @@
+{% extends 'navBar.html' %}
+{% load static %}
+{% block main %}
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5 mb-5">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#header-carousel" data-slide-to="1"></li>
+                <li data-target="#header-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="min-height: 300px;">
+                    <img class="position-relative w-100" src="{% static '../static/img/carousel-1.jpg' %}" style="min-height: 300px; object-fit: cover;">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                            <h1 class="display-3 text-white mb-md-4">Best Education From Your Home</h1>
+                            <a href="{% url 'coursesall' %}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Check all courses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style="min-height: 300px;">
+                    <img class="position-relative w-100" src="{% static '../static/img/carousel-2.jpg' %}" style="min-height: 300px; object-fit: cover;">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                            <h1 class="display-3 text-white mb-md-4">Best Online Learning Platform</h1>
+                            <a href="{% url 'coursesall' %}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Check all courses</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style="min-height: 300px;">
+                    <img class="position-relative w-100" src="{% static '../static/img/carousel-3.jpg' %}" style="min-height: 300px; object-fit: cover;">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
+                            <h1 class="display-3 text-white mb-md-4">New Way To Learn From Home</h1>
+                            <a href="{% url 'coursesall' %}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Check all courses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static '../static/img/about.jpg' %}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
+                        <h1>Innovative Way To Learn</h1>
+                    </div>
+                    <p style="text-align: justify">Almost everything in this world is a scam. If they are not scamming, then whether they are fool or don't care about their future. A job that pays well is still a scam. Scam is a dishonest plan for making money or getting an advantage. Now onto the point, when a company hire you, what they first do is set a price tag on your work. Whether your work nets them more money or does just what they needed, they will still pay you less than what you deserve for their benefit. It is a scam, but a legal scam.</p>
+                    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Testimonial</h5>
+                <h1>Comments of Our Students</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4"data-width="">"CourseSeller has been a game-changer for me! The flexibility to learn at my own pace, coupled with the expertise of the instructors, has truly helped me advance in my career. I've taken multiple courses on the platform and have been consistently impressed by the quality of content and the support from the CourseSellers team."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4">"I can't recommend CourseSellers enough! As someone with a busy schedule, the convenience of being able to access high-quality courses from anywhere has been invaluable. The instructors are knowledgeable, the material is engaging, and I've seen tangible results in my skill development since joining the platform."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="text-center">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <h4 class="font-weight-normal mb-4">"CourseSellers has exceeded my expectations in every way. From the user-friendly interface to the depth of course content, everything about the platform screams excellence. I've learned new skills, expanded my knowledge, and even connected with like-minded individuals through the CourseSeller community. It's been an enriching experience that I wholeheartedly recommend to anyone looking to invest in their personal or professional growth."</h4>
+                            <img class="img-fluid mx-auto mb-3" src="{% static '../static/img/testimonial-5.jpg' %}" alt="">
+                            <h5 class="m-0">Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+{% endblock main %}

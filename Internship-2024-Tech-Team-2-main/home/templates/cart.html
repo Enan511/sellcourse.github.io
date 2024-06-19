@@ -1,0 +1,112 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/cartdesign.css' %}">
+<script src="{% static 'js/cart.js' %}"></script>
+
+<!-- Header Section -->
+<div class="container-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center" style="min-height: 300px;">
+            <h3 class="display-4 text-white text-uppercase">Cart</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'home' %}">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Cart</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Content -->
+<section class="h-100 gradient-custom">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Cart - {{ cart_items|length }} items</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Loop through the cart items -->
+                        {% for item in cart_items %}
+                        <div class="row mb-4">
+                            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                <!-- Image -->
+                                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                    <img src="{{ item.course.image.url }}" class="w-100" alt="{{ item.course.title }}" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                <!-- Course details -->
+                                <p><strong>{{ item.course.title }}</strong></p>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="removeItem({{ item.course.id }})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                <!-- Quantity Controls -->
+                                <div class="d-flex" style="max-width: 300px;">
+                                    <button class="btn btn-primary px-3 me-2" onclick="updateQuantity({{ item.course.id }}, -1)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                    <div class="form-outline">
+                                        <input min="1" name="quantity" value="{{ item.quantity }}" type="number" class="form-control" readonly />
+                                    </div>
+
+                                    <button class="btn btn-primary px-3 ms-2" onclick="updateQuantity({{ item.course.id }}, 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Price Display -->
+                                <p class="text-start text-md-center">
+                                    <strong>{{ item.total_price }} Taka</strong>
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Summary Section -->
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0">
+                                Products
+                                <span>{{ total_products }} Taka</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Shipping
+                                <span>Gratis</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Total amount</strong>
+                                    <strong>
+                                        <p class="mb-0">(including VAT)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>{{ total_products }} Taka</strong></span>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}

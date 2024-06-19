@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>COURSE SELLERS - Online Courses HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Custom CSS to position the cart icon -->
+    <style>
+    .cart-icon {
+        position: fixed;  /* Keep the icon fixed */
+        bottom: 20px;  /* Position from the bottom edge */
+        left: 20px;  /* Position from the left edge */
+        background-color: #007bff;  /* Background color */
+        color: white;  /* Icon color */
+        padding: 10px;  /* Padding around the icon */
+        border-radius: 50%;  /* Rounded shape */
+        text-align: center;  /* Center the icon */
+        z-index: 100;  /* Ensure it's above other elements */
+        text-decoration: none;  /* No underline */
+    }
+    </style>
+
+</head>
+
+<body>
+    <!-- Main content -->
+    <main>
+        {% block main %}
+        <div style="border: 1px solid #ccc; border-radius: 5px; max-width: 600px; margin: auto; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img style="width: 300px; height: 300px; object-fit: cover; border-radius: 5px;" src="{{ course.image.url }}" alt="{{ course.title }}">
+            </div>
+            <h1 style="text-align: center;">{{ course.title }}</h1>
+            <p><strong>Price:</strong> ${{ course.price }}</p>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <p>{{ course.description }}</p>
+                <button
+                    type="button"
+                    onclick="addToCart({{ course.id }})"
+                    style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;"
+                >
+                    Add to Cart
+                </button>
+            </div>
+
+            <p><strong>Categories:</strong> {{ course.get_category_display }}</p>
+            <p><strong>Teacher:</strong> {{ course.teacher }}</p>
+            <p><strong>Upload Date:</strong> {{ course.upload_date }}</p>
+        </div>
+        {% endblock main %}
+    </main>
+
+    <!-- Cart icon linking to the cart page, positioned at the bottom-left corner -->
+    <a href="{% url 'cart' %}" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>  <!-- Font Awesome cart icon -->
+    </a>
+
+    <!-- JavaScript libraries and functions -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  <!-- Load jQuery -->
+    <script>
+    function addToCart(courseId) {
+        $.ajax({
+            url: `/add_to_cart/${courseId}/`,  // URL for adding to cart
+            type: 'POST',  // HTTP POST request
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'  // Include CSRF token for protection
+            },
+            success: function(data) {
+                if (data.success) {
+                    alert('Course added to cart');  // Notify the user
+                } else {
+                    console.error('Error:', data.message);  // Handle errors
+                }
+            },
+            error: function(xhr, status, error) {  // Handle AJAX errors
+                console.error('Request failed:', error);
+            }
+        });
+    }
+    </script>
+
+    <!-- Additional JavaScript libraries -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>  <!-- Bootstrap -->
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>  <!-- Owl Carousel -->
+    <script src="{% static 'js/main.js' %}"></script>  <!-- Your main JavaScript -->
+</body>
+</html>
+
+
+
